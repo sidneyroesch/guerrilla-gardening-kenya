@@ -1,8 +1,8 @@
 # Guerrilla Gardening Kenya – Growing Greener Communities
+[🌐 View Live Website](https://sidneyroesch.github.io/guerrilla-gardening-kenya/)
+![Guerrilla Gardening Kenya Homepage Preview](images/website-preview.png)
 
 A community-focused web project promoting guerrilla gardening, native plants and sustainable urban spaces in Kenya.
-
-![Guerrilla Gardening Kenya Preview](images/website-preview.png)
 
 **Project status:** In development
 
