@@ -45,7 +45,7 @@ The purpose of this project is to develop and demonstrate practical frontend dev
 
 ## Live Website
 
-Coming soon.
+[Visit Guerrilla Gardening Kenya](https://sidneyroesch.github.io/guerrilla-gardening-kenya/)
 
 ## Developer
 
