@@ -1,0 +1,902 @@
+/* ==========================================
+   CSS VARIABLER
+========================================== */
+
+:root {
+/* Färger som jag använder på flera delar av sidan. */
+    --primary-color: #2E5E3E;
+    --secondary-color: #7DAE6B;
+    --accent-color: #E6D8B5;
+
+    --background-color: #F8F8F5;
+    --footer-color: #1b4332;
+    --surface-color: #F8F9FA;
+
+    --text-color: #2C2C2C;
+    --text-light: #666666;
+
+
+/* Storlekar och vikter för text och rubriker. */
+    --font-family: inter, sans-serif;
+
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 1rem;
+    --font-size-md: 2rem;
+    --font-size-lg: 3rem;
+    --font-size-xl: 4rem;
+
+    --font-weight-normal: 400;
+    --font-weight-bold: 700;
+
+    --line-height: 1.6;
+
+
+/* Avstånd som återanvänds i layouten. */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 2rem;
+    --spacing-lg: 4rem;
+    --spacing-xl: 6rem;
+
+
+
+/* Olika grader av rundade hörn. */
+    --border-radius: 50px;
+    --radius-sm: 5px;
+    --radius-md: 10px;
+    --radius-lg: 20px;
+
+
+
+/* Skuggor som används för att skapa djup. */
+    --shadow-sm: 0 2px 15px rgba(0,0,0,0.08);
+    --shadow-md: 0 6px 30px rgba(0,0,0,0.15);
+
+
+
+ /* Samma mjuka övergång används på flera interaktiva element. */
+    --transition: 0.3s ease;
+
+
+/* Bestämmer den största bredden för innehållet. */
+    --container-width: 1200px;
+}
+
+/* ==========================================
+   BAS STILAR
+   Globala stilar som används genom hela sidan. 
+   Jag använder dem för att skapa en grundläggande layout och typografi
+========================================== */
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* ===== Body =====
+   Här bestämmer jag grundtypsnitt, textstorlek och bakgrund. */
+body {
+    font-family: var(--font-family);
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height);
+    color: var(--text-color);
+    background: var(--background-color);
+}
+
+/* ===== Main ===== 
+   Huvudinnehållet börjar utan extra padding ovanför. */
+main {
+    padding-top: 0;
+}
+
+/* ===== Container ===== 
+   Containern håller innehållet centrerat och lagom brett. */
+.container {
+    width: min(var(--container-width), 90%);
+    margin: 0 auto;
+}
+
+/* ===== Rubriker =====
+   Jag använder samma typsnitt och radavstånd på rubrikerna. */
+h1,
+h2,
+h3 {
+    line-height: 1.2;
+    margin-bottom: var(--spacing-sm);
+    font-family: poppins, sans-serif;
+}
+
+h1 {
+    font-size: var(--font-size-lg);
+}
+
+h2 {
+    font-size: var(--font-size-md);
+    margin-bottom: var(--spacing-sm);
+}
+
+/* ===== Stycken =====
+   Jag begränsar textbredden så att den blir lättare att läsa. */
+p {
+    margin-bottom: var(--spacing-sm);
+    max-width: 70ch;
+}
+
+/* ===== Knappar =====
+   Här bestämmer jag hur knapparna på sidan ska se ut. */
+.button {
+    display: inline-block;
+    align-self: center;
+    margin-top: var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-md);    
+    background: var(--accent-color);
+    color: var(--primary-color);
+    text-decoration: none;
+    border-radius: var(--radius-md);
+    transition: var(--transition);
+    font-weight: var(--font-weight-bold);
+    cursor: pointer;
+}
+
+.button:hover {
+    background: var(--accent-color);
+    transform: translateY(-3px);
+}
+
+/* ===== Bilder =====
+   Bilderna får rundade hörn och jag försöker anpassa dem till sin yta. */
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--radius-lg);
+}
+
+/* ===== Länkar =====
+   Länkarna får en mjuk övergång när de ändras. */
+a {
+    color: inherit;
+    transition: var(--transition);
+}
+
+/* ===== Sektioner =====
+   Alla större sektioner får samma grundavstånd. */
+section {
+    padding: var(--spacing-xl) 0;
+}
+
+/* ===== Header =====
+   Headern ligger kvar högst upp när jag scrollar. 
+   Jag ville ha en modern header som ligger kvar när man scrollar. 
+   Backdrop-filter ger en lätt suddig effekt bakom headern. */   
+header {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    box-shadow: var(--shadow-sm);
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 80px;
+}
+
+header h1 {
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+/* ===== Navigation =====
+   Här bygger jag upp menyn och avståndet mellan länkarna. */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+}
+
+nav ul {
+    display: flex;
+    gap: var(--spacing-md);
+    padding: 0;
+}
+
+nav a {
+    font-size: var(--font-size-sm);
+    color: var(--secondary-color);
+    font-weight: var(--font-weight-normal);
+    transition: var(--transition);
+    padding: 0;
+}
+
+nav a:hover {
+    font-weight: var(--font-weight-bold);
+    color: var(--secondary-color);
+}
+
+.menu-toggle {
+    display: none;
+}
+
+/* ===== Hero sektion ===== 
+   Hero-bilden är den stora bilden högst upp på sidan. */
+#hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Den mörka färgen ovanpå bilden gör texten lättare att läsa. */
+    background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('../images/hero-garden.jpg');
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    color: #fff;
+}
+
+#hero .container {
+    max-width: 800px;
+    gap: var(--spacing-md);
+}
+
+#hero h2 {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+}
+
+#hero p {
+    font-size: var(--font-size-sm);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+
+/* ===== Our Mission sektion =====
+   Här styr jag layouten för texten och bilderna i missionsdelen. */
+#about {
+    padding: var(--spacing-xl) 0;
+    background: var(--surface-color);
+}
+
+.mission-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-lg);
+    align-items: center;
+}
+
+.mission-images {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.mission-images img {
+    display: block;
+    width: 100%;
+    object-fit: cover;
+    border-radius: var(--radius-sm);
+}
+
+.mission-image-small {
+    aspect-ratio: 16 / 9;
+}
+
+.mission-image-main {
+    aspect-ratio: 4 / 3;
+}
+
+.section-label {
+    margin: 0 0 var(--spacing-sm);
+    color: var(--primary-color);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: 0.2em;
+}
+
+.mission-text h2 {
+    margin-bottom: var(--spacing-md);
+    color: var(--primary-color);
+    font-size: var(--font-size-lg);
+    line-height: 1.1;
+}
+
+.mission-intro {
+    margin-bottom: var(--spacing-lg);
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height);
+}
+
+.mission-point {
+    padding: var(--spacing-sm) 0;
+    border-top: 1px solid #dfe5df;
+}
+
+.mission-point:last-child {
+    border-bottom: 1px solid #dfe5df;
+}
+
+.mission-point h3 {
+    margin-bottom: var(--spacing-xs);
+    color: var(--primary-color);
+    font-size: var(--font-size-md);
+}
+
+.mission-point h3 span {
+    margin-right: var(--spacing-xs);
+    font-size: var(--font-size-sm);
+}
+
+.mission-point p {
+    margin: 0;
+    line-height: var(--line-height);
+}
+
+
+/* ===== Why It Matters sektion ===== 
+   Här använder jag en mörk overlay så att den vita texten syns bättre. */
+#why {
+    padding: var(--spacing-xl) 0;
+    min-height: 80vh;
+    background-image: linear-gradient(rgba(20, 45, 30, 0.65), rgba(20, 45, 30, 0.65)), url("../images/why-matters.jpg");
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+}
+
+.why-content {
+    max-width: 700px;
+}
+
+.why-content .section-label {
+    color: #fff;
+}
+
+.why-content h2 {
+    margin-bottom: var(--spacing-md);
+    color: #fff;
+    font-size: var(--font-size-xl);
+    line-height: 1.1;
+}
+
+.why-content p {
+    margin-bottom: var(--spacing-sm);
+    color: #fff;
+    font-size: var(--font-size-md);
+    line-height: 1.6;
+}
+
+
+/* ===== Native Plants sektion ===== 
+   Den här delen visar växterna som skapas med JavaScript. */
+#plants {
+    background: var(--surface-color);
+}
+
+#plants .container {
+    max-width: 1000px;
+}
+
+#plants h2 {
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-md);
+}
+
+#plants > .container > img {
+    width: 100%;
+    aspect-ratio: 16 / 7;
+    object-fit: cover;
+    margin-bottom: var(--spacing-lg);
+    box-shadow: var(--shadow-md);
+}
+
+.plant-grid {
+    display: grid;
+    /* Tre kolumner på större skärmar ger plats för växtkorten. */
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-md);
+}
+
+.plant-card {
+    margin: 0;
+    background: var(--background-color);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition);
+}
+
+.plant-card img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+.plant-card img:hover {
+    transform: scale(1.03);
+}
+
+.plant-card figcaption {
+    padding: var(--spacing-md);
+    background: var(--surface-color);
+}
+
+.plant-card h3 {
+    margin: 0 0 var(--spacing-xs);
+    color: var(--primary-color);
+    font-size: var(--font-size-sm);
+}
+
+.plant-card p {
+    margin: 0;
+    font-size: var(--font-size-sm);
+    line-height: 1.6;
+}
+
+.plant-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+.favorite-button {
+    margin-top: var(--spacing-sm);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    background: var(--accent-color);
+    color: var(--primary-color);
+    border-radius: var(--radius-sm);
+    font-weight: var(--font-weight-bold);
+}
+
+.favorite-button:hover {
+    transform: translateY(-2px);
+}
+
+#favourite-message {
+    margin-top: var(--spacing-lg);
+    color: var(--primary-color);
+    font-weight: var(--font-weight-bold);
+}
+
+/* ===== How You Can Help sektion ===== 
+   Text och bild placeras bredvid varandra på större skärmar. */
+#help {
+    padding: var(--spacing-xl) 0;
+    background: var(--surface-color);
+}
+
+.help-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-lg);
+    align-items: center;
+}
+
+.help-text h2 {
+    margin-bottom: var(--spacing-md);
+    color: var(--primary-color);
+    font-size: var(--font-size-lg);
+    line-height: 1.1;
+}
+
+.help-text p {
+    margin-bottom: var(--spacing-md);
+    font-size: var(--font-size-sm);
+    line-height: 1.6;
+}
+
+.help-text li {
+    margin-bottom: var(--spacing-sm);
+}
+
+.help-image img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+}
+
+.help-list {
+    margin: var(--spacing-lg) 0 0;
+    padding: 0;
+}
+
+.help-list li {
+    display: flex;
+    gap: var(--spacing-sm);
+    align-items: center;
+    padding: var(--spacing-sm) 0;
+    border-top: 1px solid #dfe5df;
+    font-size: var(--font-size-sm);
+}
+
+.help-list li:last-child {
+    border-bottom: 1px solid #dfe5df;
+}
+
+.help-list span {
+    color: var(--primary-color);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-xs);
+}
+
+
+/* ===== Community Projects sektion ===== 
+   Här bestämmer jag bakgrund och bredd för projektdelen. */
+#projects {
+    background: var(--background-color);
+}
+
+#projects .container {
+    max-width: 1000px;
+}
+
+#projects h2 {
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-lg);
+}
+
+#projects p {
+    max-width: 70ch;
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+}
+
+.project-text p {
+    max-width: 70ch;
+    margin: 0;
+}
+
+/* ===== Projektgalleri ===== 
+   CSS Grid används för att placera projektbilderna i kolumner. */
+.project-gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-md);
+}
+
+.project-image {
+    overflow: hidden;
+}
+
+.project-image img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    transition: var(--transition);
+}
+
+.project-image img:hover {
+    transform: scale(1.03);
+}
+
+/* ===== FAQ sektion ===== 
+   Frågorna ser ut som knappar och svaren är dolda från början. */
+#faq {
+    background: var(--surface-color);
+}
+
+#faq h2 {
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-sm);
+}
+
+#faq > .container > p {
+    margin-bottom: var(--spacing-lg);
+}
+
+.faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: var(--spacing-md) 0;
+    border: none;
+    border-top: 1px solid #dfe5df;
+    background: none;
+    color: var(--primary-color);
+    font: inherit;
+    font-weight: var(--font-weight-bold);
+    text-align: left;
+    cursor: pointer;
+}
+
+.faq-question span {
+    font-size: var(--font-size-md);
+    font-weight: normal;
+}
+
+.answer {
+    display: none;
+    margin: 0;
+    padding: 0 0 var(--spacing-md);
+    max-width: 70ch;
+    line-height: 1.6;
+}
+
+.faq-question:last-of-type {
+    border-bottom: 1px solid #dfe5df;
+}
+
+
+/* ===== Get Involved sektion ===== 
+   Text och bild visas bredvid varandra på större skärmar. */
+#join {
+    padding: var(--spacing-lg) 0;
+    background: var(--surface-color);
+}
+
+#join .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-lg);
+    align-items: center;
+}
+
+.join-text h2 {
+    margin-bottom: var(--spacing-md);
+    color: var(--primary-color);
+    font-size: var(--font-size-xl);
+    line-height: 1.1;
+}
+
+.join-text p:not(.section-label) {
+    margin-bottom: var(--spacing-md);
+    line-height: 1.6;
+}
+
+#join img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+}
+
+
+/* ===== Footer ===== */
+footer {
+    padding: var(--spacing-xl) 0 var(--spacing-md);
+    background: var(--primary-color);
+    color: #fff;
+}
+
+.footer-main {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(180px, 1fr);
+    gap: var(--spacing-xl);
+    align-items: end;
+    padding-bottom: var(--spacing-xl);
+}
+
+.footer-cta h2 {
+    max-width: 8ch;
+    margin-bottom: var(--spacing-md);
+    font-size: var(--font-size-xl);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+}
+
+.footer-cta p:not(.section-label) {
+    max-width: 40ch;
+    margin-bottom: var(--spacing-md);
+    color: rgba(255, 255, 255, 0.82);
+}
+
+.footer-cta .section-label {
+    color: var(--accent-color);
+}
+
+.footer-connect {
+    align-self: end;
+    padding-bottom: var(--spacing-xs);
+}
+
+.footer-connect h3 {
+    margin-bottom: var(--spacing-md);
+    font-size: var(--font-size-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+}
+
+.footer-connect a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: min(100%, 220px);
+    padding: var(--spacing-xs) 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+    color: #fff;
+    text-decoration: none;
+}
+
+.footer-connect a span {
+    transition: transform var(--transition);
+}
+
+.footer-connect a:hover {
+    color: var(--accent-color);
+}
+
+.footer-connect a:hover span {
+    transform: translateX(5px);
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: var(--spacing-md);
+    padding-top: var(--spacing-md);
+    border-top: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.footer-bottom p {
+    margin: 0 0 var(--spacing-xs);
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.footer-brand {
+    color: #fff !important;
+    font-weight: var(--font-weight-bold);
+}
+
+.footer-copyright {
+    white-space: nowrap;
+}
+
+
+/* ===== Media Queries =====
+   Här ändrar jag layouten för mindre skärmar. 
+   På mindre skärmar ändrar jag bland annat menyn och kolumnerna
+   så att sidan blir lättare att använda i mobilen. */
+@media (max-width: 768px) {
+
+    header .container {
+        min-height: 70px;
+    }
+
+    header h1 {
+        font-size: var(--font-size-sm);
+        line-height: 1.1;
+        max-width: 200px;
+    }
+
+    nav {
+        position: relative;
+    }
+
+    .menu-toggle {
+        display: block;
+        border: none;
+        background: none;
+        font-size: var(--font-size-md);
+        cursor: pointer;
+        padding: var(--spacing-xs);
+    }
+
+    .menu-toggle:hover {
+        color: var(--primary-color);
+        background: transparent;
+    }
+
+    nav ul {
+        display: none;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 150px;
+        padding: var(--spacing-md);
+        background: var(--background-color);
+        box-shadow: var(--shadow-md);
+        border-radius: var(--radius-md);
+    }
+
+    nav.menu-open ul {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+
+    #about {
+        padding: var(--spacing-lg) 0;
+    }
+
+    .mission-content {
+        grid-template-columns: 1fr;
+    }
+
+    .mission-text h2 {
+        font-size: var(--font-size-md);
+    }
+
+    #why {
+        padding: var(--spacing-lg) 0;
+    }
+
+    .why-content h2 {
+        font-size: var(--font-size-lg);
+    }
+
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .plant-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .plant-card h3 {
+        font-size: var(--font-size-md);
+    }
+
+    .plant-card p {
+        font-size: var(--font-size-sm);
+    }
+
+    #help {
+        padding: var(--spacing-lg) 0;
+    }
+
+    .help-content {
+        grid-template-columns: 1fr;
+    }
+
+    .help-image img {
+        aspect-ratio: 4 / 3;
+    }
+
+    #join .container {
+        grid-template-columns: 1fr;
+    }
+
+    .join-text h2 {
+        font-size: var(--font-size-lg);
+    }
+
+    #join img {
+        aspect-ratio: 4 / 3;
+    }
+
+    .footer-main {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+        padding-bottom: var(--spacing-lg);
+    }
+
+    .footer-cta h2 {
+        max-width: 8ch;
+        font-size: var(--font-size-lg);
+    }
+
+    .footer-connect {
+        padding-bottom: 0;
+    }
+
+    .footer-connect a {
+        width: 100%;
+        max-width: 280px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-xs);
+    }
+
+    .footer-copyright {
+        white-space: normal;
+    }
+}
+
+

@@ -1,0 +1,65 @@
+/* ==========================================
+   CSS RESET
+   Jag använder reset för att minska webbläsarens
+   standard marginalinställningar 
+   och få en mer enhetlig layout.
+========================================== */
+
+/* Jag tar bort standardmarginaler och padding.
+   Det gör det lättare för mig att styra layouten själv. */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Gör scrollningen mjuk när jag klickar på en länk
+   som går till en annan del av sidan. */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Jag ser till att sidan minst fyller hela skärmen
+   och förbättrar hur texten renderas. */
+body {
+    min-height: 100vh;
+    text-rendering: optimizeLegibility;
+}
+
+/* Bilder ska inte bli större än sitt innehållsområde.
+   Det hjälper sidan att fungera på olika skärmstorlekar. */
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Jag tar bort listpunkterna eftersom jag vill
+   styla listorna själv på sidan. */
+ul,
+ol {
+    list-style: none;
+}
+
+/* Länkar ärver färgen från elementet runt omkring.
+   Jag tar också bort standardunderstrykningen. */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Knappar använder samma typsnitt som resten av sidan.
+   Jag ändrar också muspekaren så att knappen känns klickbar. */
+button {
+    font: inherit;
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+/* Formulärelement använder samma typsnitt som resten av sidan. */
+input,
+textarea,
+select {
+    font: inherit;
+}
